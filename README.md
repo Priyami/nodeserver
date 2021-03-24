@@ -35,44 +35,35 @@ If you display the package.json file (cat package.json), you will see the defaul
   "license": "ISC"
 }
 
+
 Now install Express in the myapp directory and save it in the dependencies list of your package.json file
 $ npm install express
 
 The dependencies section of your package.json will now appear at the end of the package.json file and will include Express.
 
 {
-  "name": "node-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1"
+  },
+  "main": "app.js",
+  "devDependencies": {},
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "description": ""
 }
-
-To use the Express library you call the require() function in your index.js file to include it in your application. Create this file now, in the root of the "node-server" application directory, and give it the following contents:
-const express = require('express')
-const app = express();
-const port = 3000;
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-});
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`)
-});
-
-You can start the server by calling node with the script in your command prompt:
-$ node index.js
-
-Example app listening on port 8000
-
 
 
 Installing the Express Application Generator
@@ -95,22 +86,16 @@ NPM will create the new Express app in a sub folder of your current location, di
 
 The new app will have a package.json file in its root directory. You can open this to see what dependencies are installed, including Express and the template library Jade:
 
-{
-  "name": "node-server",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
-  "dependencies": {
-    "cookie-parser": "~1.4.3",
+"dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "http-errors": "~1.6.2",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "morgan": "~1.9.0"
-  }
-}
+    "morgan": "~1.9.1"
+  },
 
 Install all the dependencies for the helloworld app using NPM as shown:
 
