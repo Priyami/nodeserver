@@ -119,22 +119,22 @@ $ npm install
 
 Then run the app (the commands are slightly different for Windows and Linux/macOS), as shown below:
 
-# Run helloworld on Windows with Command Prompt
-SET DEBUG=helloworld:* & npm start
+# Run node-server on Windows with Command Prompt
+SET DEBUG=node-server:* & npm start
 
-# Run helloworld on Windows with PowerShell
-SET DEBUG=helloworld:* | npm start
+# Run node-server on Windows with PowerShell
+SET DEBUG=node-server:* | npm start
 
-# Run helloworld on Linux/macOS
-DEBUG=helloworld:* npm start
+# Run node-server on Linux/macOS
+DEBUG=node-server:* npm start
 The DEBUG command creates useful logging, resulting in an output like that shown below.
 
-$ SET DEBUG=helloworld:* & npm start
+$ SET DEBUG=node-server:* & npm start
 
-> helloworld@0.0.0 start D:\Github\expresstests\helloworld
+> node-server@0.0.0 start D:\Github\expresstests\node-server
 > node ./bin/www
 
-  helloworld:server Listening on port 3000 +0ms
+  node-server:server Listening on port 3000 +0ms
 Open a browser and navigate to http://127.0.0.1:3000/ to see the default Express welcome page.
 
 
