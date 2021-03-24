@@ -41,7 +41,7 @@ $ npm install express
 The dependencies section of your package.json will now appear at the end of the package.json file and will include Express.
 
 {
-  "name": "myapp",
+  "name": "node-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -70,28 +70,33 @@ app.listen(port, () => {
 
 You can start the server by calling node with the script in your command prompt:
 $ node index.js
+
 Example app listening on port 8000
 
 
 
 Installing the Express Application Generator
+
+
 The Express Application Generator tool generates an Express application "skeleton". Install the generator using NPM as shown:
 
-npm install express-generator -g
-Note: You may need to prefix this line with sudo on Ubuntu or macOS. The -g flag installs the tool globally so that you can call it from anywhere.
+$ npm install express-generator -g
 
-To create an Express app named "helloworld" with the default settings, navigate to where you want to create it and run the app as shown:
 
-express helloworld
+To create an Express app named "node-server" with the default settings, navigate to where you want to create it and run the app as shown:
+
+$ express node-server
+
 Note: You can also specify the template library to use and a number of other settings. Use the help command to see all the options:
 
-express --help
+$ express --help
+
 NPM will create the new Express app in a sub folder of your current location, displaying build progress on the console. On completion, the tool will display the commands you need to enter to install the Node dependencies and start the app.
 
 The new app will have a package.json file in its root directory. You can open this to see what dependencies are installed, including Express and the template library Jade:
 
 {
-  "name": "helloworld",
+  "name": "node-server",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -106,10 +111,12 @@ The new app will have a package.json file in its root directory. You can open th
     "morgan": "~1.9.0"
   }
 }
+
 Install all the dependencies for the helloworld app using NPM as shown:
 
-cd helloworld
-npm install
+$ cd node-server
+$ npm install
+
 Then run the app (the commands are slightly different for Windows and Linux/macOS), as shown below:
 
 # Run helloworld on Windows with Command Prompt
