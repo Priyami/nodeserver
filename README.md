@@ -23,8 +23,9 @@ $ npm init
 
 If you display the package.json file (cat package.json), you will see the defaults that you accepted, ending with the license.
 
+
 {
-  "name": "node-server",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -66,6 +67,9 @@ The dependencies section of your package.json will now appear at the end of the 
 }
 
 
+
+
+
 Installing the Express Application Generator
 
 
@@ -87,15 +91,15 @@ NPM will create the new Express app in a sub folder of your current location, di
 The new app will have a package.json file in its root directory. You can open this to see what dependencies are installed, including Express and the template library Jade:
 
 "dependencies": {
-    "body-parser": "^1.19.0",
-    "cookie-parser": "~1.4.4",
-    "cors": "^2.8.5",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1"
-  },
+  "body-parser": "^1.19.0",
+  "cookie-parser": "~1.4.4",
+  "cors": "^2.8.5",
+  "debug": "~2.6.9",
+  "express": "~4.16.1",
+  "http-errors": "~1.6.3",
+  "jade": "~1.11.0",
+  "morgan": "~1.9.1"
+},
 
 Install all the dependencies for the helloworld app using NPM as shown:
 
