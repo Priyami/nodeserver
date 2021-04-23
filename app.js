@@ -5,11 +5,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var cors = require('cors');
-//const {sendEmail} = require("/Users/karvangum/projects/Portfolio/src/mail");
+
+
 
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
 
 var app = express();
 
@@ -30,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -46,16 +49,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-/*app.post("/users", (req, res) => {
-  //res.header("Access-Control-Allow-Origin", "*");
-  
-  //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.send('hello this is from server js');
-  //res.send(req.body.json);
-  //res.render(req.body.json);
-  console.log(req.body);
-  sendEmail(req.body.email, req.body.comment, "hello");
-});*/
+
 
 
 module.exports = app;
