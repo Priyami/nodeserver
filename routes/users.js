@@ -23,26 +23,28 @@ var visitors = db.ref("visitors");
 /* GET users listing. */
 router.get('/', function (req, res, next) {
 
-  res.send("Here i am");
+  res.render('user', { title: 'Visitors' });
   
 
 });
-router.post('/', function (req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.send(req.body);
-  var data = req.body;
+router.post('/', function (request, response) {
+  var data = request.body;
+  
+  //Send Email.
+  sendEmail(request.body.email, request.body.comment, "hello");
+
+
+  //Push Data to DB
   visitors.push(data, function (err) {
     if (err) {
-      res.send(err)
+      console.log(err);
+      
     } else {
-      res.send("Success:User Save");    
+      
+      response.send(data);
     }
   });
-  sendEmail(req.body.email, req.body.comment, "hello");
 
 })
-
-
 
 module.exports = router;
