@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const { sendEmail } = require("/Users/karvangum/projects/Portfolio/src/mail");
+const { sendEmail } = require("./mail");
 var firebase = require('firebase');
-require('dotenv').config({ path: '/Users/karvangum/projects/node-server/.env' });
+require('dotenv').config({ path: './.env' });
 
 
 // Initialize Firebase
@@ -20,13 +20,28 @@ let db = firebase.database();
 
 var visitors = db.ref("visitors");
 
+
 /* GET users listing. */
-router.get('/', function (req, res, next) {
+router.get('/',  (req, res, next) =>{
+    try {
+        visitors.on("value", function(snapshot){
+         let visits = [];
+         snapshot.forEach(visit => {
+           const {firstname, lastname, email, comment} = visit.val();
+           const serverkey = visit.key;
+           visits.push({firstname,lastname,email, comment, serverkey});
+         })
 
-  res.render('user', { title: 'Visitors' });
-  
+          return res.status(200).send(visits);
+        })
+        
+    }
+    catch(error){
+      console.log(error);
+      return res.status(500).send(error);
+    }
+  })
 
-});
 router.post('/', function (request, response) {
   var data = request.body;
   
@@ -46,5 +61,7 @@ router.post('/', function (request, response) {
   });
 
 })
+
+
 
 module.exports = router;
