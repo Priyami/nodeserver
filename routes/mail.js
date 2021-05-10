@@ -11,7 +11,7 @@ const getEmailData = (to, message, template)=> {
         case "hello":
                 data = {
                     from: "newtonvithi@gmail.com",
-                    to:"newtonvithi@gmail.com",
+                    to:to,
                     subject: `Please include to your world ${to}`,
                     html: Hello(message)
                 }
@@ -19,7 +19,7 @@ const getEmailData = (to, message, template)=> {
         case "thanks":
             data = {
                 from: "newtonvithi@gmail.com",
-                to: "newtonvithi@gmail.com",
+                to: to,
                 subject: 'Portfolio Message',
                 html: Thanks()
             }
@@ -30,25 +30,25 @@ const getEmailData = (to, message, template)=> {
     return data;
 }
 
-    
+
 
 
 const sendEmail = async (to, message, type) => {
-    
+
     const oauth2Client = new OAuth2(
         process.env.CLIENT_ID,
         process.env.CLIENT_SECRET,
         "https://developers.google.com/oauthplayground"
       )
-      
+
       oauth2Client.setCredentials({
           refresh_token: process.env.REFRESH_TOKEN
       })
-      
+
     const accessToken = await oauth2Client.getAccessToken();
-    
+
     const smtpTransport = mailer.createTransport({
-            
+
         service: "gmail",
         auth: {
             type: "OAuth2",
@@ -57,24 +57,23 @@ const sendEmail = async (to, message, type) => {
             clientSecret: process.env.CLIENT_SECRET,
             refreshToken: process.env.REFRESH_TOKEN,
             accessToken: accessToken,
-            
+
           },
         tls: {
             rejectUnauthorized: false
-        }   
+        }
     });
-    
+
     const mail = getEmailData(to, message, type)
-    
+
     await smtpTransport.sendMail(mail, function(error, response){
         if(error) {
             console.log(error);
         } else {
-            console.log(mail);
-            console.log("email sent successfully")
-        } 
+            console.log("email sent successfully to --> "+ mail.to)
+        }
        // smtpTransport.close();
-    })  
+    })
 }
 
 
