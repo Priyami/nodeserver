@@ -34,7 +34,7 @@ router.get('/',  (req, res, next) =>{
 
           return res.status(200).send(visits);
         })
-        
+
     }
     catch(error){
       console.log(error);
@@ -44,7 +44,7 @@ router.get('/',  (req, res, next) =>{
 
 router.post('/', function (request, response) {
   var data = request.body;
-  
+
   //Send Email.
   sendEmail(request.body.email, request.body.comment, "hello");
 
@@ -53,12 +53,25 @@ router.post('/', function (request, response) {
   visitors.push(data, function (err) {
     if (err) {
       console.log(err);
-      
+
     } else {
-      
+
       response.send(data);
     }
   });
+
+})
+
+router.delete("/clearall", function (request,response) {
+  firebase.database().ref("visitors").remove()
+    .then(function() {
+      console.log("Remove succeeded.")
+    })
+    .catch(function(error) {
+      console.log("Remove failed: " + error.message)
+      return response.status(500).send(error.message);
+    });
+    return response.status(200);
 
 })
 
