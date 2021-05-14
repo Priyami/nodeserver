@@ -62,16 +62,16 @@ router.post('/', function (request, response) {
 
 })
 
-router.delete("/clearall", function (request,response) {
-  firebase.database().ref("visitors").remove()
+router.delete("/", function (request,response) {
+  visitors.remove()
     .then(function() {
       console.log("Remove succeeded.")
     })
     .catch(function(error) {
-      console.log("Remove failed: " + error.message)
-      return response.status(500).send(error.message);
-    });
-    return response.status(200);
+      console.log("Remove failed: " + error)
+      
+    })
+    
 
 })
 

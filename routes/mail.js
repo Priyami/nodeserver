@@ -10,16 +10,16 @@ const getEmailData = (to, message, template)=> {
     switch(template){
         case "hello":
                 data = {
-                    from:process.env.DEFAULT_FROM_EMAIL,
-                    to:to,
+                    from:process.env.EMAIL,
+                    to:process.env.EMAIL,
                     subject: `Please include to your world ${to}`,
                     html: Hello (message)
                 }
                 break;
         case "thanks":
             data = {
-                from: process.env.DEFAULT_FROM_EMAIL,
-                to: to,
+                from: process.env.EMAIL,
+                to: process.env.EMAIL,
                 subject: 'Portfolio Message',
                 html: Thanks()
             }
