@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../Portfolio"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../netlify-cms"
+		},
+		{
+			"path": "../../test-admin"
+		}
+	],
+	"settings": {}
+}
