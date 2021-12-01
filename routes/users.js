@@ -65,6 +65,7 @@ router.post('/', function (request, response) {
 router.delete("/", function (request,response) {
   visitors.remove()
     .then(function() {
+      visitors.remove();
       console.log("Remove succeeded.")
     })
     .catch(function(error) {
