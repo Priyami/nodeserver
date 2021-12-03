@@ -46,10 +46,6 @@ router.get('/',  (req, res, next) =>{
 router.post('/', function (request, response) {
   var data = request.body;
   
-  //Send Email.
-  sendEmail(request.body.email, request.body.comment, "hello");
-
-
   //Push Data to DB
   visitors.push(data, function (err) {
     if (err) {
@@ -60,6 +56,9 @@ router.post('/', function (request, response) {
       response.send(data);
     }
   });
+
+  //Send Email.
+  sendEmail(request.body.email, request.body.comment, "hello");
 
 })
 
