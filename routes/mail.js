@@ -34,7 +34,7 @@ const getEmailData = (to, message, template)=> {
 
 
 const sendEmail = async (to, message, type) => {
-    
+    console.log("Email "+ to);
     const oauth2Client = new OAuth2(
         process.env.CLIENT_ID,
         process.env.CLIENT_SECRET,

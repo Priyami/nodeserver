@@ -24,7 +24,7 @@ var visitors = db.ref("visitors");
 
 
 /* GET users listing. */
-router.get('/',  (req, res, next) =>{
+router.get('/getallusers',  (req, res, next) =>{
     try {
         visitors.on("value", function(snapshot){
          let visits = [];
@@ -44,28 +44,28 @@ router.get('/',  (req, res, next) =>{
     }
   })
 
-router.post('/send', function (request, response) {
-  var data = request.body;
-  //Send Email.
-  sendEmail(request.body.email, request.body.comment, "hello");
-  
-  
 
+
+router.post('/send', function (request, response) {
+  let data = request.body;
+  console.log(data);
   //Push Data to DB
   visitors.push(data, function (err) {
     if (err) {
       console.log(err);
-      
+      response.send("Sorry , please try again")
     } else {
-      
-      response.send(data);
+      console.log("Sending welcome email to "+ data.email);
+
+      sendEmail(data.email, data.comment, "hello");
+      sendEmail(data.email, data.comment, "thanks");
+
+      response.send("Email Sent successfully to  "+ data .email);
     }
-  });
-
+    
   
-
+});
+  
 })
-
-
 
 module.exports = router;
