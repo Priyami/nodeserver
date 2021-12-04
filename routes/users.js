@@ -1,7 +1,7 @@
 var express = require('express');
 const path = require('path');
 var router = express.Router();
-const { sendEmail } = require("./mail");
+const { sendEmail } = require("./mailtome");
 var firebase = require('firebase');
 require('dotenv').config({ path: './.env' });
 
