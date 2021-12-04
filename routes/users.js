@@ -43,7 +43,7 @@ router.get('/',  (req, res, next) =>{
     }
   })
 
-router.post('/', function (request, response) {
+router.post('/send', function (request, response) {
   var data = request.body;
   
   //Push Data to DB
