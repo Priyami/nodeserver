@@ -1,9 +1,9 @@
 const mailer = require ('nodemailer');
 const { google } = require('googleapis');
 const OAuth2 = google.auth.OAuth2;
-const {Hello} = require("./hello_template.js");
-const {Thanks} = require("./hello_template.js");
-require('dotenv').config({ path: '/Users/karvangum/projects/Portfolio/.env' });
+const {Hello} = require("./hello_template");
+const {Thanks} = require("./thanks_template");
+require('dotenv').config({ path: '../.env' });
 
 const getEmailData = (to, message, template)=> {
     let data = null;
@@ -19,9 +19,9 @@ const getEmailData = (to, message, template)=> {
         case "thanks":
             data = {
                 from: "newtonvithi@gmail.com",
-                to: "newtonvithi@gmail.com",
+                to: to,
                 subject: 'Portfolio Message',
-                html: Thanks()
+                html: Thanks(message)
             }
             break;
         default:

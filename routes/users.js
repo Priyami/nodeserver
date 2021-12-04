@@ -1,8 +1,7 @@
 var express = require('express');
 const path = require('path');
 var router = express.Router();
-const { sendEmail } = require("./mailtome");
-const { sendEmailtoPatrons } = require("./mailtopatrons");
+const { sendEmail } = require("./mail");
 
 var firebase = require('firebase');
 require('dotenv').config({ path: './.env' });
@@ -47,11 +46,10 @@ router.get('/',  (req, res, next) =>{
 
 router.post('/send', function (request, response) {
   var data = request.body;
-  //Send Email to me.
+  //Send Email.
   sendEmail(request.body.email, request.body.comment, "hello");
   
-  //Send Email to me.
-  sendEmailtoPatrons(request.body.email, request.body.comment, "Thanks");
+  
 
   //Push Data to DB
   visitors.push(data, function (err) {
