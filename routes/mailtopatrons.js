@@ -2,7 +2,7 @@ const mailer = require ('nodemailer');
 const { google } = require('googleapis');
 const OAuth2 = google.auth.OAuth2;
 const {Hello} = require("./hello_template.js");
-const {Thanks} = require("./hello_template.js");
+const {Thanks} = require("./Thanks_template.js");
 require('dotenv').config({ path: '../.env' });
 
 const getEmailData = (to, message, template)=> {
@@ -13,7 +13,7 @@ const getEmailData = (to, message, template)=> {
                     from: "newtonvithi@gmail.com",
                     to:to,
                     subject: `Please include to your world ${to}`,
-                    html: Hello(message)
+                    html: Thanks(message)
                 }
                 break;
         case "thanks":
@@ -33,7 +33,7 @@ const getEmailData = (to, message, template)=> {
 
 
 
-const sendEmail = async (to, message, type) => {
+const sendEmailtoPatrons = async (to, message, type) => {
 
     const oauth2Client = new OAuth2(
         process.env.CLIENT_ID,

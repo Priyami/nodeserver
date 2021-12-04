@@ -10,9 +10,13 @@ const Thanks = data => {
             <body style = "margin:0; padding:0">
                 <br />
                 <br />
-                <div>Thanks</div>
+                <div>Thank You for your email, will get back to you soon</div>
                 <br />
                 <br />
+                <div>Regards,</div>
+                <br />
+                <br />
+                <div>Priya</div>
             </body>
         </html>
         `;
