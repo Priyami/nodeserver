@@ -1,8 +1,8 @@
 const mailer = require ('nodemailer');
 const { google } = require('googleapis');
 const OAuth2 = google.auth.OAuth2;
-const {Hello} = require("./hello_template.js");
-const {Thanks} = require("./Thanks_template.js");
+const {Hello} = require("./hello_template");
+const {Thanks} = require("./thanks_template");
 require('dotenv').config({ path: '../.env' });
 
 const getEmailData = (to, message, template)=> {
@@ -77,4 +77,4 @@ const sendEmailtoPatrons = async (to, message, type) => {
 }
 
 
-module.exports = {sendEmail};
+module.exports = {sendEmailtoPatrons};
