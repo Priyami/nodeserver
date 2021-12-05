@@ -24,25 +24,25 @@ var visitors = db.ref("visitors");
 
 
 /* GET users listing. */
-router.get('/getallusers',  (req, res, next) =>{
-    try {
-        visitors.on("value", function(snapshot){
-         let visits = [];
-         snapshot.forEach(visit => {
-           const {firstname, lastname, email, comment} = visit.val();
-           const serverkey = visit.key;
-           visits.push({firstname,lastname,email, comment, serverkey});
-         })
+router.get('/getallusers', (req, res, next) => {
+  try {
+    visitors.on("value", function (snapshot) {
+      let visits = [];
+      snapshot.forEach(visit => {
+        const { firstname, lastname, email, comment } = visit.val();
+        const serverkey = visit.key;
+        visits.push({ firstname, lastname, email, comment, serverkey });
+      })
 
-          return res.status(200).send(visits);
-        })
-        
-    }
-    catch(error){
-      console.log(error);
-      return res.status(500).send(error);
-    }
-  })
+      return res.status(200).send(visits);
+    })
+
+  }
+  catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+})
 
 
 
@@ -55,22 +55,14 @@ router.post('/send', function (request, response) {
       console.log("Error on pushing users data to db ", err);
       response.send("Sorry , please try again")
     } else {
-      console.log("Sending welcome email to "+ data.email);
-      sendEmail(data.email, data.comment, "hello", function (sendemailerr){
-        if (sendemailerr){
-          console.log("Error on Sending hello email to "+ data.email);
-        }else{
-          sendEmail(data.email, data.comment, "thanks");
-        }
-      });
-
-
-      response.send("Email Sent successfully to  "+ data .email);
+      console.log("Sending welcome email to " + data.email);
+      sendEmail(data.email, data.comment, "hello");
+      sendEmail(data.email, data.comment, "thanks");
+      response.send("Email Sent successfully to  " + data.email);
     }
-    
-  
-});
-  
+
+  });
+
 })
 
 module.exports = router;
