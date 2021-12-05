@@ -52,7 +52,7 @@ router.post('/send', function (request, response) {
   //Push Data to DB
   visitors.push(data, function (err) {
     if (err) {
-      console.log(err);
+      console.log("Error heroku master", err);
       response.send("Sorry , please try again")
     } else {
       console.log("Sending welcome email to "+ data.email);
