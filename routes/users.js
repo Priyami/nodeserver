@@ -62,7 +62,7 @@ router.post('/send', function (request, response) {
     }
 
   });
-
+  response.end();
 })
 
 module.exports = router;
