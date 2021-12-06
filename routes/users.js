@@ -17,10 +17,7 @@ let config = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID
 }
-firebase.initializeApp(config);
-let db = firebase.database();
 
-var visitors = db.ref("visitors");
 
 
 /* GET users listing. */
@@ -50,6 +47,10 @@ router.post('/send', function (request, response) {
   let data = request.body;
   console.log(data);
   //Push Data to DB
+  firebase.initializeApp(config);
+  let db = firebase.database();
+
+  var visitors = db.ref("visitors");
   visitors.push(data, function (err) {
     if (err) {
       console.log("Error on pushing users data to db ", err);
