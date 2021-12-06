@@ -18,12 +18,15 @@ let config = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID
 }
 
+firebase.initializeApp(config);
+  let db = firebase.database();
 
+  var visitors = db.ref("visitors");
 
 /* GET users listing. */
 router.get('/getallusers', (req, res, next) => {
   try {
-    visitors.on("value", function (snapshot) {
+    visitors.once("value", function (snapshot) {
       let visits = [];
       snapshot.forEach(visit => {
         const { firstname, lastname, email, comment } = visit.val();
@@ -47,10 +50,7 @@ router.post('/send', function (request, response) {
   let data = request.body;
   console.log(data);
   //Push Data to DB
-  firebase.initializeApp(config);
-  let db = firebase.database();
-
-  var visitors = db.ref("visitors");
+  
   visitors.push(data, function (err) {
     if (err) {
       console.log("Error on pushing users data to db ", err);
