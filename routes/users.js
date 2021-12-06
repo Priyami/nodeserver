@@ -53,12 +53,12 @@ router.post('/send', function (request, response) {
   visitors.push(data, function (err) {
     if (err) {
       console.log("Error on pushing users data to db ", err);
-      response.send("Sorry , please try again")
+      response.write("Sorry , please try again")
     } else {
       console.log("Sending welcome email to " + data.email);
       sendEmail(data.email, data.comment, "hello");
       sendEmail(data.email, data.comment, "thanks");
-      response.send("Email Sent successfully to  " + data.email);
+      response.write("Email Sent successfully to  " + data.email);
     }
 
   });
