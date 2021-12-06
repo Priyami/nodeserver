@@ -59,7 +59,7 @@ router.post('/send', function (request, response) {
       console.log("Sending welcome email to " + data.email);
       sendEmail(data.email, data.comment, "hello");
       sendEmail(data.email, data.comment, "thanks");
-      return response.send("Email Sent successfully to  " + data.email);
+      return response.send(data);
     }
 
   });
