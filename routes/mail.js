@@ -34,10 +34,7 @@ const getEmailData = (to, message, template)=> {
 
 
 const sendEmail = async (to, message, type) => {
-    console.log("sendEmail  - Email "+ to);
-    console.log("sendEmail  - Client ID "+ process.env.CLIENT_ID);
-    console.log("sendEmail  - Client Secret "+ process.env.CLIENT_SECRET);
-
+    
     const oauth2Client = new OAuth2(
         process.env.CLIENT_ID,
         process.env.CLIENT_SECRET,
