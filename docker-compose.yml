@@ -1,21 +1,25 @@
 version: '3'
 services:
   node-server:
-   
+    
     ports:
-      - "3080:3080"
+      - "4000:4000"
     image: server
-    container_name: node-server
+    container_name: server
     volumes:
-       - ./server:/host_mnt/Users/karvangum/projects/node-server
-       - /host_mnt/Users/karvangum/projects/node-server/node_modules
+         - ./server:/host_mnt/Users/karvangum/projects/node-server
+         - /host_mnt/Users/karvangum/projects/node-server/node_modules
+    
   Portfolio:
    
     ports:
-      - "8080:8080"
+      - "8080:80"
     image: client
-    container_name: portfolio
+    container_name: client
     stdin_open: true
     volumes:
        - ./Portfolio:/host_mnt/Users/karvangum/projects/Porfolio
        - /host_mnt/Users/karvangum/projects/Portfolio/node_modules
+    
+  
+
